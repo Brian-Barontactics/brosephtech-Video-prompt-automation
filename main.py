@@ -80,30 +80,125 @@ TIMESTAMP RULES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Read exact timestamps directly from the SRT. Never estimate.
 
-Hard transition signals (always catch these):
-  - "Next comp" / "Next is" / "First off" / "Next"
-  - "All right, [topic]"
-  - Exclamatory name drops e.g. "Ruined King!"
-  - "Last comp" / "That's it for"
-  - "Let's start with" / "Let us get started with"
+IDENTIFYING TRANSITIONS
+━━━━━━━━━━━━━━━━━━━━━━
+Hard transition signals — speaker explicitly signals a new section:
+  - "Next comp is..." / "Next up..." / "First up..."
+  - "All right, let's talk about [name]"
+  - Exclamatory champion name drop e.g. "Graves!" or "Miss Fortune!"
+  - "Last comp" / "That's it for [topic]"
+  - "Let's start with" / "Let's move on to"
+  - Sponsor callouts e.g. "Shoutout to MetaTFT"
 
-Soft transition signals (read content not just keywords):
-  - Any pivot from one named subject to another even mid-flow
-  - "The other version" / "level-up version" / "there's two ways"
-  - Topic shifts without hard keywords
-  - Community comp names won't always match transcript — identify the concept
+Soft transition signals — content shifts without explicit keywords:
+  - Speaker stops discussing one comp and begins explaining a different one
+  - A new trait, strategy, or playstyle is introduced and becomes the main focus
+  - The board, items, or rolldown described clearly belong to a different comp
+  - Level or econ strategy changes e.g. fast 8 vs reroll signals a new comp section
+  - "There's another version..." / "You can also play..."
 
-Timestamp labeling rules:
-  - Every new distinct topic = new timestamp regardless of size
+STEP 1 — IDENTIFY VIDEO TYPE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Read the full transcript first and classify the video into ONE of these types:
+
+  TYPE A — PATCH UPDATE
+  Signals: speaker discusses buffs, nerfs, balance changes, meta impact of specific
+  traits or champions. Words like "nerfed", "buffed", "changed", "this patch" appear
+  frequently. Sections revolve around what changed, not how to play a comp.
+
+  TYPE B — COMP GUIDE / META PLAYBOOK
+  Signals: speaker explains how to execute specific comps with boards, rolldowns,
+  item holders, and augment choices. Deep tactical breakdown of one or more comps.
+  Words like "rolldown", "item holders", "fast 8", "reroll", "opener" appear frequently.
+
+  TYPE C — TIER LIST / META PREDICTION
+  Signals: speaker ranks comps or previews an upcoming patch. Covers many comps
+  briefly rather than going deep on any one. Words like "tier", "ranked", "prediction",
+  "best comps" appear frequently.
+
+STEP 2 — APPLY VIDEO TYPE RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  TYPE A — PATCH UPDATE TIMESTAMP RULES:
+  - Name each section after the TRAIT or CHAMPION being discussed
+  - Always append "Changes" to the label e.g. "Ixtal Changes" / "Kai'Sa Changes"
+  - Absorb ALL sub-topics (augments, boards, meta impact) into one parent timestamp
+  - Do NOT create sub-timestamps within a patch section
+  - Group minor changes together e.g. "WW, Bel & Sera Boards"
+  - Example output:
+      0:00 Intro
+      0:14 Tierlist
+      0:43 Ixtal Changes
+      1:46 Kai'Sa Changes
+      3:12 Aurelion Sol Changes
+      4:46 Bilgewater Changes
+      5:40 WW, Bel & Sera Boards
+      6:10 Outro
+
+  TYPE B — COMP GUIDE TIMESTAMP RULES:
+  - Name each section after the COMP CARRY or PLAYSTYLE
+  - Use star emoji for 3-star reroll comps e.g. "Graves 3⭐" / "TF 3⭐"
+  - Include playstyle in name where relevant e.g. "MF + Fizz Fast 8" / "Illaoi Fast 9"
+  - Sub-sections each get their own timestamp e.g. early board, rolldown, augments
+  - Group fundamentals sub-topics each with their own timestamp
+  - Example output:
+      0:00 Intro
+      0:44 Bilgewater Fundamentals
+      1:17 Feeding Tahm Kench
+      1:42 Bilgewater Shop Economy
+      2:37 Toggling Bilgewater Tiers
+      3:12 When to Commit to Bilgewater
+      3:36 Captain's Brew
+      3:56 Positioning
+      4:18 MetaTFT Sponsor
+      4:56 Graves 3⭐
+      6:36 MF + Fizz Fast 8
+      8:16 TF 3⭐
+      10:06 Illaoi Fast 9
+      11:26 Augments
+      13:06 Final Boards
+      14:16 Outro
+
+  TYPE C — TIER LIST TIMESTAMP RULES:
+  - Keep timestamps broad and high level
+  - Name after tier or comp group e.g. "Tierlist" / "S Tier" / "A Tier Comps"
+  - Individual comp breakdowns get their own timestamp if discussed in depth
+  - Example output:
+      0:00 Intro
+      0:30 Tierlist
+      1:00 S Tier Comps
+      3:00 A Tier Comps
+      5:00 Outro
+
+STEP 3 — UNIVERSAL RULES FOR ALL VIDEO TYPES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  - Read transcript carefully — never guess or invent champion/trait names
+  - Use the closest match from the actual transcript text
   - Never merge intro with first content section
-  - Sub-sections are their own timestamps
-  - Use carry/champion names when more informative than trait names
-  - Hero augment comps: "Champion Name (Hero)" e.g. "Viego (Hero)"
+  - Sponsor segments always get their own short label e.g. "MetaTFT Sponsor"
+  - Hero augment comps labeled as "Champion Name (Hero)" e.g. "Viego (Hero)"
+  - Hard transition signals: "Next", "All right", "Let's talk about", exclamatory
+    name drops, "Last comp", "That's it for", sponsor callouts
+  - Soft transition signals: content shifts to a new comp or trait being discussed,
+    new strategy or playstyle introduced, board/items clearly belong to different comp
 
-Timestamp format:
+Timestamp format example:
   0:00 Intro
-  0:15 [Section Name]
-  3:31 [Section Name]
+  0:44 Bilgewater Fundamentals
+  1:17 Feeding Tahm Kench
+  1:42 Bilgewater Shop Economy
+  2:37 Toggling Bilgewater Tiers
+  3:12 When to Commit to Bilgewater
+  3:36 Captain's Brew
+  3:56 Positioning
+  4:18 MetaTFT Sponsor
+  4:56 Graves 3⭐
+  6:36 MF + Fizz Fast 8
+  8:16 TF 3⭐
+  10:06 Illaoi Fast 9
+  11:26 Augments
+  13:06 Final Boards
+  14:16 Outro
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SERIES EPISODE RULES
@@ -146,7 +241,8 @@ def transcribe_video_to_srt(video_path: str) -> str:
             "file": (os.path.basename(video_path), video_file, "video/mp4")
         }
         data = {
-            "output_format": "srt"   # Request SRT format directly
+            "model_id": "scribe_v1",
+            "output_format": "srt"
         }
         response = requests.post(url, headers=headers, files=files, data=data)
 
@@ -160,7 +256,17 @@ def transcribe_video_to_srt(video_path: str) -> str:
     return srt_content
 
 
-# ── STEP 2: GENERATE DESCRIPTION WITH CLAUDE ──────────────────────────────────
+# ── STEP 2: TRIM SRT ───────────────────────────────────────────────────────────
+
+def trim_srt(srt_content: str, max_chars: int = 80000) -> str:
+    """Trims SRT content to fit within Claude's token limit."""
+    if len(srt_content) > max_chars:
+        print(f"[!] SRT too long ({len(srt_content)} chars), trimming to {max_chars}...")
+        return srt_content[:max_chars]
+    return srt_content
+
+
+# ── STEP 3: GENERATE DESCRIPTION WITH CLAUDE ──────────────────────────────────
 
 def generate_description(srt_content: str) -> str:
     """
@@ -173,7 +279,7 @@ def generate_description(srt_content: str) -> str:
 
     message = client.messages.create(
         model="claude-opus-4-6",
-        max_tokens=1024,
+        max_tokens=4096,
         system=SYSTEM_PROMPT,
         messages=[
             {
@@ -193,7 +299,7 @@ def generate_description(srt_content: str) -> str:
     return description
 
 
-# ── STEP 3: SAVE OUTPUT ────────────────────────────────────────────────────────
+# ── STEP 4: SAVE OUTPUT ────────────────────────────────────────────────────────
 
 def save_output(description: str, video_path: str) -> str:
     """
@@ -228,7 +334,8 @@ def run(video_path: str):
     # Step 1 — Transcribe
     srt_content = transcribe_video_to_srt(video_path)
 
-    # Step 2 — Generate description
+    # Step 2 — Trim and generate description
+    srt_content = trim_srt(srt_content)
     description = generate_description(srt_content)
 
     # Step 3 — Save and print
@@ -243,11 +350,8 @@ def run(video_path: str):
 
 if __name__ == "__main__":
     # ── DROP YOUR VIDEO PATH HERE ──────────────────────────────────────────────
-    # Option A: hardcode the path
     VIDEO_PATH = "your_video.mp4"
 
-    # Option B: pass it as a command line argument
-    # Run with: python main.py your_video.mp4
     if len(sys.argv) > 1:
         VIDEO_PATH = sys.argv[1]
 
